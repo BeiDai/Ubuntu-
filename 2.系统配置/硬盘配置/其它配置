@@ -1,0 +1,43 @@
+chrome
+
+去chrome官网下载linux版的chrome。
+
+执行一下命令，
+
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+GCC && GDB
+
+安装GCC编译器和GDB调试器，写C程序必备
+
+sudo apt-get install gcc && gdb
+
+shutter
+
+ubuntu下很强大的一款截图软件
+
+sudo apt-get install shutter
+
+git
+
+这个不用多说，github程序猿必备。
+
+sudo apt-get install git
+
+压缩软件RAR
+
+用于压缩和解压缩RAR文件
+
+sudo apt-get install rar
+
+wps
+
+去wps官网下载wps for linux。
+
+下载后，打开终端，运行一下命令
+
+sudo dpkg -i wps-office_10.1.0.5672~a21_amd64.deb
+
+如果缺少依赖包，可以先执行一下命令(后面的软件安装过程中如出现依赖包问题，一样可以采用这种方式解决)
+
+sudo apt-get install -f

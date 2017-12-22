@@ -1,0 +1,135 @@
+##这是Debian的hdparm的默认配置。它是一个
+##相当简单的脚本，所以请按照以下指南:)
+##任何以注释开头的行都被忽略 - 添加尽可能多的行
+＃＃ 喜欢。请注意，不支持内嵌注释。如果一行
+##只包含空格（制表符，空格，回车符），它将会
+##被忽略，所以你可以空格控制字段，你喜欢。还要别的吗
+##已停止！这意味着具有杂散字符或线的线
+##使用非＃注释字符将由initscript解释。
+##这可能是轻微的，但可能严重的副作用
+##硬盘驱动器，因此请遵循指南。补丁改善
+## flexibilty欢迎。请阅读/usr/share/doc/hdparm/README.Debian for
+##关于已知问题的注释，特别是如果你有一个MD数组。
+##
+##注意，如果init脚本导致引导问题，您可以传递'nohdparm'
+##在内核命令行上，并且脚本将不会运行。
+##
+##取消注释以下选项将导致它们被添加到DEFAULT
+##字符串，位于以下块中列出的选项前面。
+##
+##如果一个选项被列出两次，第二个实例将替换第一个实例。
+##
+## / sbin / hdparm不运行，除非有一个块的形式：
+## DEV {
+＃＃ 选项
+＃＃ 选项
+## ...
+##}
+##存在。此块将导致/ sbin / hdparm OPTIONS DEV运行。
+##其中OPTIONS是先前定义的所有选项的并置
+##在块之外，并且在块中定义的所有选项。
+
+＃-q安静
+安静
+＃-a用于文件系统预读的扇区计数
+#read_ahead_sect = 12
+＃-A禁用/启用IDE驱动器的先行读取功能
+#lookahead = on
+＃-b总线状态
+#bus =打开
+＃-B apm设置
+#apm = 255
+＃-B当打开电池时的apm设置
+#apm_battery = 127
+＃-c enable（E）IDE 32位I / O支持 - 可以是0,1,3中的任何一个
+＃io32_support = 1
+＃-d disable / enable该驱动器的“using_dma”标志
+#dma = off
+＃-D启用/禁用驱动器缺陷管理
+#defect_mana = off
+＃-E cdrom速度
+#cd_speed = 16
+＃-k禁用/启用此驱动器的“keep_settings_over_reset”标志
+#keep_settings_over_reset = off
+＃-K禁用/启用驱动器的“keep_features_over_reset”标志
+#keep_features_over_reset =开启
+＃-m用于多个扇区I / O的扇区计数
+#mult_sect_io = 32
+＃-P驱动器内部预取机制的最大扇区数
+#prefetch_sect = 12
+＃-r设备的只读标志
+#read_only = off
+＃-s在待机模式下打开/关闭电源
+＃poweron_standby = off
+＃-S驱动器的等待（spindown）超时
+#spindown_time = 24
+＃-u中断 - 取消驱动器的标志
+#interrupt_unmask = on
+＃-W禁用/启用IDE驱动器的写缓存功能
+#write_cache = off
+＃-X用于较新（E）IDE / ATA2驱动器的IDE传输模式
+#transfer_mode = 34
+＃-y强制立即进入待机模式
+＃支持
+＃-Y强制立即进入睡眠模式
+＃睡觉
+＃-Z禁用某些Seagate驱动器的节能功能
+#disable_seagate
+＃-M设置驱动器的声学管理属性
+#acoustic_management
+＃-p设置芯片组PIO模式
+＃chipset_pio_mode
+＃--security-freeze冻结驱动器的安全状态
+＃security_freeze
+＃--security-unlock解锁驱动器的安全性
+＃security_unlock = PWD
+＃--security-set-pass设置安全密码
+＃security_pass = password
+＃--security-disable禁用驱动器锁定
+＃security_disable
+＃--user-master选择要使用的密码
+＃user-master = u
+＃--security-mode设置安全模式
+＃security_mode = h
+
+＃根文件系统。有关详细信息，请参阅README.Debian
+＃ROOTFS = / dev / hda
+
+##新注意 - 您可以在此配置文件中使用直接hdparm命令
+##也是 - 设置是丑陋的，但它保持向后兼容性
+##另外，应该注意，任何以开头的块
+##关键字'command_line'不会运行，直到根文件系统之后
+##安装。这是为了避免运行块两次。如果你需要
+##运行hdparm为您的根磁盘设置参数，请使用
+##标准格式。
+
+#Samples following：
+＃前三个对devfs系统有好处，第四个对系统有好处
+#not use devfs。第五个示例使用直hdparm命令行
+＃句法。使用命令行语法的任何块都必须以
+#the keyword'command_line'，并且不尝试验证语法。
+＃提供给那些更舒服的hdparm语法。
+
+＃/ dev / discs / disc0 / disc {
+＃mult_sect_io = 16
+＃write_cache = off
+＃spindown_time = 240
+＃}
+
+＃/ dev / discs / disc1 / disc {
+＃mult_sect_io = 32
+＃spindown_time = 36
+＃write_cache = off
+＃}
+
+＃/ dev / cdroms / cdrom0 {
+＃dma = on
+＃interrupt_unmask = on
+＃io32_support = 0
+＃}
+
+＃/ dev / hda {
+＃mult_sect_io = 16
+＃write_cache = off
+＃dma = on
+＃}

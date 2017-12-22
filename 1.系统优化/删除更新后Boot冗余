@@ -1,0 +1,7 @@
+#dpkg --get-selections |grep linux  
+
+#sudo apt-get remove linux-image-4.4.0-70-generic 
+
+#sudo apt autoremove   
+
+

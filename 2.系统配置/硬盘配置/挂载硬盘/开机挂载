@@ -1,0 +1,11 @@
+
+# sudo blkid
+
+# df -l
+
+# vi /etc/fstab 
+
+default 0 0 按大多数永久文件系统的缺省值设置挂载定义  DUMP功能 开机check 
+
+
+

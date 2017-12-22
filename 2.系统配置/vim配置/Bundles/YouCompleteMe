@@ -1,0 +1,29 @@
+功能：代码自动补全 //参考网站 http://blog.jobbole.com/58978/
+
+安装：Bundle 'Valloric/YouCompleteMe'
+
+安装c-family的自动补全
+
+     cd ~/.vim/bundle/YouCompleteMe
+     ./install.py -- clang-completer
+
+配置：YCM会寻找当前路径以及上层路径的.ycm_extra_conf.py 
+
+在当前目录添加配置文件：.ycm_extra_conf.py  ./YCM配置
+
+YouCompleteMe 其他功能：
+
+跳转到定义GoToDefinition
+跳转到声明GoToDeclaration
+以及两者的合体GoToDefinitionElseDeclaration
+
+可以在.vimrc中配置相应的快捷键。
+//参考网站https://github.com/Valloric/YouCompleteMe#options
+" for ycm
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nmap <F4> :YcmDiags<CR>
+

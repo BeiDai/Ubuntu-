@@ -1,0 +1,7 @@
+fun:browse the tags of the current file and get an overview of its structure
+
+.vimrc:
+
+nmap <F8> :TagbarToggle<CR>
+
+

@@ -1,0 +1,30 @@
+配置hosts
+
+vi /etc/hosts 
+
+
+    [root@Primary etc]# sudo rcnscd restart
+    sudo: rcnscd: command not found
+
+解决的方法是：安装nscd服务   重启服务后可以访问google HK
+
+sudo apt-get install nscd
+
+service nscd restart
+
+ping www.google.com
+
+谷歌、推特等这些网站必须用https形式访问！
+
+网址后面的ncr的意思是：(No Country Redirect)禁止国别跳转，重定向的意思。（Google会进行各种判断从而进行转跳）
+
+
+设置谷歌搜索，那么请填：https://www.google.com/ncr
+
+设置搜索引擎
+
+中文：https://www.google.com/search?hl=zh-CN&q=%s
+英文：https://www.google.com/search?hl=en&q=%s
+强制加密：https://encrypted.google.com/search?{google:RLZ}{google:acceptedSuggestion}{google:originalQueryForSuggestion}sourceid=chrome&ie={inputEncoding}&q=%s
+
+

@@ -1,0 +1,18 @@
+
+//更换背景图片
+
+进入Grub ， 输入videoinfo查看大小支持
+
+#sudo vim /etc/default/grub
+
+"GRUB_GFXMODE=1366x768"
+
+#sudo cp grub.png /boot/grub
+
+#sudo update-grub2
+
+//跟换字体配置
+
+sudo vim /etc/grub.d/05_debian_theme  
+
+

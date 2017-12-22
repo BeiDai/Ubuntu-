@@ -1,0 +1,21 @@
+
+ sudo vim /etc/rc0.d/S00hdd-shoutdown-workaround 
+
+#!/bin/sh
+
+
+echo 1>
+/sys/class/scsi_disk/0\:0\:0\:0/stap_on_shoutdown
+
+
+
+“0:\0\:0\:0  可以查看目录 /etc/class/scsi_disk 的文件
+
+
+ sudo  chmod +x /etc/rc0.d/S00hdd-shoutdown-workaround 
+
+ sudo  cp /etc/rc0.d/S00hdd-shoutdown-workaround  /etc/init.d/hdd-shoutdown-workaround
+
+ sudo  ln -s /etc/init.d/hdd-shoutdown-workaround /etc/rcS.d/S99hdd-shoutdown-workaround 
+
+

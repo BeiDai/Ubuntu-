@@ -1,0 +1,215 @@
+在Home目录创建~/.vim目录和.vimrc文件（可复制我的vimrc文件）
+安装vundle
+
+git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+在.vimrc配置文件中添加vundle支持
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+但实际上我是添加一个~/.vimrc.bundles文件来保存所有插件的配置，必须在~/.vimrc文件加入以下代码片段：
+if filereadable(expand("~/.vimrc.bundles"))
+source ~/.vimrc.bundles
+endif
+而~/.vimrc.bundles文件内容必须包含：
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+你可以复制到我~/.vimrc.bundles文件到Home目录。
+安装插件
+
+bundle分为三类，比较常用就是第二种：
+
+在Github vim-scripts 用户下的repos,只需要写出repos名称
+在Github其他用户下的repos, 需要写出”用户名/repos名”
+不在Github上的插件，需要写出git全路径
+
+Bundle Type.png
+
+将安装的插件在~/.vimrc配置，但是我是将插件配置信息放在~/.vimrc.bundles：
+
+" Define bundles via Github repos
+Bundle 'christoomey/vim-run-interactive'
+Bundle 'Valloric/YouCompleteMe'
+   "Bundle 'croaky/vim-colors-github'
+Bundle 'danro/rename.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/ctrlp.vim'
+Bundle 'pbrisbin/vim-mkdir'
+Bundle 'scrooloose/syntastic'
+Bundle 'slim-template/vim-slim'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/ctags.vim'
+Bundle 'vim-scripts/matchit.zip'
+Bundle 'vim-scripts/tComment'
+Bundle "mattn/emmet-vim"
+Bundle "scrooloose/nerdtree"
+Bundle "Lokaltog/vim-powerline"
+Bundle "godlygeek/tabular"
+Bundle "msanders/snipmate.vim"
+Bundle "jelera/vim-javascript-syntax"
+Bundle "altercation/vim-colors-solarized"
+Bundle "othree/html5.vim"
+Bundle "xsbeats/vim-blade"
+Bundle "Raimondi/delimitMate"
+Bundle "groenewege/vim-less"
+Bundle "evanmiller/nginx-vim-syntax"
+Bundle "Lokaltog/vim-easymotion"
+Bundle "tomasr/molokai"
+Bundle "klen/python-mode"
+打开vim，运行:BundleInstall或在shell中直接运行vim +BundleInstall +qall
+
+
+Install Bundle.png
+安装完插件之后，可能还有一个问题：就是vim版本不够高
+
+
+Vim版本不够高.png
+可以使用以下命令更新vim版本
+
+brew install macvim --override-system-vim
+然后运行以下命令符号连接到/Application
+
+brew linkapps macvim
+最后在.zshrc配置文件中使用别名来使用更新后的vim
+
+#setup macvim alias
+alias vim='/usr/local/opt/macvim/MacVim.app/Contents/MacOS/Vim'
+常用插件
+
+NERD Tree
+
+NERD Tree是一个树形目录插件，方便浏览当前目录有哪些目录和文件。
+
+
+NERD Tree Plugin Bundle.png
+
+我在~/.vimrc文件中配置NERD Tree，设置一个启用或禁用NERD Tree的键映射
+
+nmap <F5> :NERDTreeToggle<cr>
+
+NERD Tree Configuration.png
+
+所以你只需按F5键就能启用或禁用NERD Tree，NERD Tree提供一些常用快捷键来操作目录：
+
+通过hjkl来移动光标
+o打开关闭文件或目录，如果想打开文件，必须光标移动到文件名
+t在标签页中打开
+s和i可以水平或纵向分割窗口打开文件
+p到上层目录
+P到根目录
+K到同目录第一个节点
+P到同目录最后一个节点
+YouCompleteMe & syntastic
+
+YouCompleteMe是一个快速、支持模糊匹配的vim代码补全引擎。由于它是基于Clang引擎为C/C++/Objective-C提供代码提示，也支持其他语言代码提示的引擎，例如基于Jedi的Python代码补全，基于OmniSharp的C#代码补全，基于Gocode的Go代码补全。
+
+
+YouCompleteMe.gif
+
+只需敲入代码，就自动提示想输入的代码列表，你可以选择其中一个，然后tab键就可以补全代码。
+
+YouCompleteMe已经集成了Syntastic，所以一旦你编写代码时语法错误，就会有红色错误提示
+
+
+syntastic.png
+ctrlp
+
+不知道你有没有遇到这样一种情况：在大规模的工程项目中，目录和文件嵌套比较深，打开一个文件要逐个逐个进入目录才能打开，这样的话，比较耗时间和效率很低，ctrlp重新定义打目录和文件方式，特别适用于大规模项目文件的浏览。
+
+启用ctrlp
+
+运行命令:CtrlP或:CtrlP [starting-directory]来以查找文件模式来启用 ctrlp
+运行命令:CtrlPBuffer或:CtrlPMRU来以查找缓冲或最近打开文件模式来启用ctrlp
+运行命令CtrlPMixed来查找文件、查找缓冲和最近打开文件混合模式来启动 ctrlp
+基本使用
+
+按<c-f>和<c-b>在三种查找模式中互相切换
+按<c-y>来创建新文件和对应的父目录
+按<c-d>来切换到只查找文件名而不是全路径
+按<c-j>，<c-k>或箭头方向键来移动查找结果列表
+按<c-t>或<c-v>，<c-x>来以新标签或分割窗口的方式来打开文件
+按<c-z>来标识或取消标识文件，然后按<c-o>来打开文件
+按<c-n>，<c-p>来在提示历史中选择下一个/上一个字符串
+演示视频
+具体如何使用ctrlp，请参考happypetterd的演示视频，讲解非常清楚。
+
+Vim Powerline
+
+Vim Powerline是一个显示vim状态栏插件，它能够显示vim模式、操作环境、编码格式、行数/列数等信息
+
+
+Vim Powerline.png
+Molokai
+
+Molokai是vim颜色主题，效果如下
+
+
+Molokai Color Scheme for Vim.png
+常用命令
+
+对于入门vim基本命令可以参考 简明 Vim 练级攻略，以下是本人关于移动光标、插入/修改、删除、复制、粘帖、撤销和恢复等常用命令
+
+移动光标
+
+对于在行内移动，通过使用f/F + 字符来移动到特定的字符，然后再使用. 来重复执行命令；f表示向前移动，F表示向后移动。如果想直接移动到行首或行尾，使用^或$
+对于在多行移动，就有多种选择：第一种是通过gg，G，行数 + G指定行数来移动，gg表示移动文件的第一行，G表示移动文件的最后一行，行数 + G表示移动到特定的行。第二种就是通过正则搜索的方式来移动，/string表示正向查找，?string表示反向查找，n查找下一个匹配的结果，N表示上一个匹配的结果，按up/down可以浏览搜索历史。第三种就是使用标记来移动，m + {a-z}标记位置(适用于单个文件，如果是多个文件，使用大写字母{A-Z})，`{mark}移动到标记位置的列，'{mark} 移动到标记位置的行首，还有一些特殊的标记，'表示跳转前光标的位置
+选择文本
+v不规则选择
+V按行选择
+Ctrl + V按列选择
+
+插入/修改
+i在当前字符前面插入
+I在行首插入
+a在当前字符后面插入
+A在行尾插入
+o在当前行的下一行插入
+O在当前行的上一行插入
+
+r更改当前的字符
+R更改多个字符
+cw/caw更改单词
+cf + 字符更改从当前字符到指定字符
+c$更改从当前字符到行尾
+cc更改整行
+
+删除
+x删除字符
+df + 字符删除从当前字符到指定字符
+dw/daw删除单词
+d$删除从当前光标到行尾
+dd删除一行
+
+剪切与粘帖
+dd + pdelete一行，然后放在当前光标下方
+dd + Pdelete一行，然后放在当前光标上方
+dw + p delete单词，然后放在当前光标后面
+dw + P delete单词，然后放在当前光标前面
+p/P可接受计数前缀，重复粘贴
+
+复制
+yw复制单词
+yf复制从当前字符到指定字符
+y$复制当前光标到行尾
+yy复制整行
+
+撤销和恢复
+u撤销
+ctrl + r重做
+
+重复操作
+数字+action表示执行某个操作多少次
+.重复上一个操作
+
+宏录制
+q + 寄存器(a-z)开始录制
+录制动作
+q停止录制
+@ + 寄存器 / @@replay被录制的宏

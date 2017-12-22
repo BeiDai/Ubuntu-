@@ -1,0 +1,17 @@
+功能：符号自动补全
+
+配置：" 自动补全单引号，双引号等
+Bundle 'Raimondi/delimitMate'
+
+" for python docstring ", 特别有用
+au FileType python let b:delimitMate_nesting_quotes = ['"']
+" 关闭某些类型文件的自动补全
+"au FileType mail let b:delimitMate_autoclose = 0
+
+在vimrc中加入 let delimitMate_matchpairs = "(:),[:],{:}"
+
+"delimitMate                                               
+au FileType cpp let b:delimitMate_matchpairs = "(:),[:],{:}" 
+
+不自动补全'<' 尖括号
+

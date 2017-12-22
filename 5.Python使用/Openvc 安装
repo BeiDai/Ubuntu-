@@ -1,0 +1,78 @@
+1、安装OpenCV所需的库（编译器、必须库、可选库）
+GCC 4.4.x or later
+CMake 2.6 or higher
+Git
+GTK+2.x or higher, including headers (libgtk2.0-dev)
+pkg-config
+Python 2.6 or later and Numpy 1.5 or later with developer packages (python-dev, python-numpy)
+ffmpeg or libav development packages: libavcodec-dev, libavformat-dev, libswscale-dev
+[optional] libtbb2 libtbb-dev
+[optional] libdc1394 2.x
+[optional] libjpeg-dev, libpng-dev, libtiff-dev, libjasper-dev, libdc1394-22-dev
+[compiler] sudo apt-get install build-essential
+[required] sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+[optional] sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+2、从官网下载最新opencv源码（2.4以上）http://sourceforge.net/projects/opencvlibrary/
+或者github
+3、编译opencv
+将opencv放至任意目录，解压
+  unzip opencv-3.0.0-rc1.zip
+创建编译目录，编译
+cd ~/opencv-3.0.0-rc1
+mkdir release
+cd release
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local ..
+make
+sudo make install
+4、测试opencv
+1) 创建工作目录
+mkdir ~/opencv-lena
+cd ~/opencv-lena
+gedit DisplayImage.cpp
+2) 编辑如下代码
+#include <stdio.h>
+#include <opencv2/opencv.hpp>
+using namespace cv;
+int main(int argc, char** argv )
+{
+    if ( argc != 2 )
+    {
+        printf("usage: DisplayImage.out <Image_Path>\n");
+        return -1;
+    }
+    Mat image;
+    image = imread( argv[1], 1 );
+    if ( !image.data )
+    {
+        printf("No image data \n");
+        return -1;
+    }
+    namedWindow("Display Image", WINDOW_AUTOSIZE );
+    imshow("Display Image", image);
+    waitKey(0);
+    return 0;
+}
+3) 创建CMake编译文件
+gedit CMakeLists.txt
+写入如下内容
+cmake_minimum_required(VERSION 2.8)
+project( DisplayImage )
+find_package( OpenCV REQUIRED )
+add_executable( DisplayImage DisplayImage.cpp )
+target_link_libraries( DisplayImage ${OpenCV_LIBS} )
+4) 编译
+cd ~/opencv-lena
+cmake .
+make
+5) 执行
+此时opencv-lena文件夹中已经产生了可执行文件DisplayImage，下载lena.jpg放在opencv-lena下，运行
+./DisplayImage lena.jpg
+6) 结果
+
+5、安装python-opencv
+可直接使用apt安装
+sudo apt-get install python-opencv
+sudo apt-get install python-numpy
+测试
+打开python，import cv模块成功即可。
+import cv

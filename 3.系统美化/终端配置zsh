@@ -1,0 +1,24 @@
+
+首先，安装zsh：
+
+sudo apt-get install zsh
+
+接下来我们需要下载 oh-my-zsh 项目来帮我们配置 zsh，采用wget安装
+
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+
+所以这时的zsh 基本已经配置完成,你需要一行命令就可以切换到 zsh 模式，终端下输入以下命令
+
+chsh -s /usr/local/bin/zsh
+
+/* sudo vim /etc/passwd
+
+   root 路径改为 /usr/bin/zsh
+
+   xu   路径改为 /bin/zsh  原来为   /bin/bash */
+
+
+
+
+
+   

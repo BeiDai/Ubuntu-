@@ -1,0 +1,6 @@
+功能：在vim中执行命令行命令
+
+配置：
+
+" Run commands that require an interactive shell
+nnoremap <Leader>r :RunInInteractiveShell<space>

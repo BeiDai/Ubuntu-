@@ -1,0 +1,86 @@
+
+一、建立软件安装目录
+
+# mkdir /opt
+
+# cd /opt
+
+二、下载软件
+
+Sublime Text 3的下载网址：http://www.sublimetext.com/3
+
+三、解压软件包
+
+tar jxvf sublime_text_3_build_3059_x64.tar.bz2
+
+四、命令行下直接运行 Sublime Text
+
+# cd /opt/sublime_text_3
+# ./sublime_text
+
+五、创建桌面快捷方式（总是以命令行的形式运行似乎不够方便）
+
+执行命令（复制桌面快捷方式的配置文件）
+
+# cp /opt/sublime_text_3/sublime_text.desktop /usr/share/applications
+
+更改配置文件
+
+# vim /usr/share/applications/sublime_text.desktop
+
+我的配置如下
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Sublime Text
+GenericName=Text Editor
+Comment=Sophisticated text editor for code, markup and prose
+Exec=/opt/sublime_text_3/sublime_text %F
+Terminal=false
+MimeType=text/plain;
+Icon=/opt/sublime_text_3/Icon/48x48/sublime-text.png
+Categories=TextEditor;Development;
+StartupNotify=true
+Actions=Window;Document;
+
+[Desktop Action Window]
+Name=New Window
+Exec=/opt/sublime_text_3/sublime_text -n
+OnlyShowIn=Unity;
+
+[Desktop Action Document]
+Name=New File
+Exec=/opt/sublime_text/sublime_text_3 --command new_file
+OnlyShowIn=Unity;
+
+注意：配置文件中标注红色的地方对应的是软件安装目录，需要改成你自己的安装目录。
+
+六、设置软件到桌面显示（以下在桌面的最顶部操作）
+
+应用程序（Applications）>编程（Programming）> Sublime Text >”点击右键”选择“将此启动器添加到桌面（Add this launcher to desktop）”
+
+七、中文显示：
+
+软件在Linux下是无法显示中文的，可以通过如下操作解决：
+
+打开Sublime的菜单栏 -> Preferences -> Settings – User，在配置文件中增加（前半部分原本就有，可看情况进行替换）：
+
+// Settings in here override those in “Default/Base File.sublime-settings”, and
+// are overridden in turn by file type specific settings. Place your settings
+// here, to ensure they’re preserved when upgrading.
+{
+“font_face”: “WenQuanYi Micro Hei Mono”
+}
+
+八、VIM模式兼容：
+
+Preference => Setting – User 点击打开
+这时会打开一个叫做Preferences.sublime-settings的JSON文件，这应该就是用户定制的配置文件。在配置文件中添加一条语句 ”ignored_packages”，保存即可
+这时打开一个文件就可以用VI模式进行编辑了。默认是INSERT MODE，ESC后进入COMMAND MODE，进行各种操作吧。
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+功能：语法检查
+https://github.com/vim-syntastic/syntastic
+使用:
+:Errors 显示错误面板
+:lnext  到下一个错误
+:lprevious 到上一个错误
+
+配置：see :help syntastic
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+

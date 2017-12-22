@@ -1,0 +1,40 @@
+
+sudo apt-get install unity-tweak-tool 
+
+执行以下命令安装Flatabulous主题：
+
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get update
+sudo apt-get install flatabulous-theme
+
+该主题有配套的图标，安装方式如下：
+
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install ultra-flat-icons
+
+
+MAC主题配置
+
+#2 Mac OS X主题、图标、cursor
+
+$ sudo add-apt-repository ppa:noobslab/macbuntu
+$ sudo apt-get update
+$ sudo apt-get install macbuntu-os-icons-lts-v7
+$ sudo apt-get install macbuntu-os-ithemes-lts-v7
+
+安装Arc GTK主题
+
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"
+
+wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key
+sudo apt-key add - < Release.key
+
+sudo apt update
+sudo apt install arc-theme
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+配置文件 ~/.vimrc  ~/.vimrc.bundles
+1.下载配置Vundle
+
+#git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/vundle
+
+#vim ~/.vimrc
+" Vundel config
+	if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
+
+#vim ~/.vimrc.bundles
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'VundleVim/Vundle.vim'
+
+" Define bundles via Github repos
+
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+filetype on
+

@@ -1,0 +1,36 @@
+
+/* ppa源 */
+
+PPA 全称为 Personal Package Archives（个人软件包档案），是Ubuntu Launchpad 网站提供的一项服务，当然不仅限于 Launchpad 。它允许个人用户上传软件源代码，通过 Launchpad 进行编译并发布为二进制软件包，作为 apt/新立得源供其他用户下载和更新。在Launchpad网站上的每一个用户和团队都可以拥有一个或多个PPA。
+通常 PPA 源里的软件是官方源里没有的，或者是最新版本的软件。相对于通过 Deb 包安装来说，使用 PPA 的好处是，一旦软件有更新，通过 sudo apt-get upgrade 这样命令就可以直接升级到新版本。
+
+先安装ppa源扩展工具
+
+apt-get install -y ppa-purge
+
+添加源地址、密钥等内容，只需要一条简单的命令即可
+
+sudo add-apt-repository ppa:user/ppa-name
+
+安装redis的ppa源
+
+到https://launchpad.net/ubuntu/+ppas搜索“redis-server”，如图所示
+
+sudo  add-apt-repository ppa:schwuk/redis 
+
+更新源安装redis即可，添加ppa的源相当于在sources list添加那两个软件源
+
+sudo  apt-get  update 
+
+sudo  apt-get  install  redis-server   
+
+删除ppa源
+
+sudo add-apt-repository -r ppa:user/ppa-name
+
+进入 /etc/apt/sources.list.d 目录，将相应 ppa 源的保存文件删除
+
+到新立德软件管理器中的设置->“软件源”，在身份验证中将要删除的 ppa 源的密匙删除，在其它软件中将添加的源删掉。
+
+然后执行，sudo apt-get update
+

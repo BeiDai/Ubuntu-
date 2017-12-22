@@ -1,0 +1,12 @@
+
+sudo gedit /etc/lightdm/lightdm.conf
+
+[SeatDefaults]
+
+greeter-session=unity-greeter
+
+allow-guest=false
+
+
+开启时只需删除配置
+

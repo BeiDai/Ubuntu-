@@ -1,0 +1,25 @@
+sudo apt-get install Python-scipy
+
+sudo apt-get install python-numpy
+
+sudo apt-get install python-matplotlib
+
+ubuntu下mysql-python模块的安装
+
+安装步骤：
+
+1、sudo apt-get install python-setuptools
+
+2、sudo apt-get install libmysqld-dev
+
+3、sudo apt-get install libmysqlclient-dev
+
+4、sudo apt-get install python-dev
+
+5、sudo easy_install mysql-python
+
+ 
+
+测试下：
+
+在python交互式窗口，import MySQLdb 试试，不报错的话，就证明安装好了。

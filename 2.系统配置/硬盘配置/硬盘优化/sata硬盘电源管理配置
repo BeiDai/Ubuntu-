@@ -1,0 +1,14 @@
+
+ sudo vi /etc/hdparm.conf
+
+/dev/sda {
+
+    apm = 192
+
+    apm_battery = 192
+
+}
+
+ sudo chmond +X /etc/hdparm.conf
+
+

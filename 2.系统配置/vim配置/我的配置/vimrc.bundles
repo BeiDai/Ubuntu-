@@ -1,0 +1,22 @@
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle
+Bundle 'VundleVim/Vundle.vim'
+
+" Define bundles via Github repos
+Bundle "scrooloose/nerdtree"
+Bundle 'tpope/vim-bundler'
+Bundle "tomasr/molokai"
+Bundle "Raimondi/delimitMate"
+Bundle "Lokaltog/vim-powerline"
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'kien/ctrlp.vim'
+if filereadable(expand("~/.vimrc.bundles.local"))
+  source ~/.vimrc.bundles.local
+endif
+
+filetype on

@@ -1,0 +1,139 @@
+" Vundel config
+	if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
+
+
+"vim config
+set nocompatible
+" Highlight current line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
+" Display extra whitespace
+set list listchars=tab:»·,trail:·
+" Cucumber navigation commands
+  autocmd User Rails Rnavcommand step features/step_definitions -glob=**/* -suffix=_steps.rb
+  autocmd User Rails Rnavcommand config config -glob=**/* -suffix=.rb -default=routes
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l	
+" Get off my lawn
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+" Color scheme
+colorscheme molokai
+highlight NonText guibg=#060606
+highlight Folded  guibg=#0A0A0A guifg=#9090D0
+" Numbers
+set number
+set numberwidth=5
+
+set backspace=2   " Backspace deletes like most programs in insert mode
+set nobackup
+set nowritebackup
+set noswapfile    
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set laststatus=2  " Always display the status line
+set autowrite     " Automatically :write before running commands
+set confirm       " Need confrimation while exit
+set fileencodings=utf-8,gb18030,gbk,big5
+
+set autoindent  
+set cindent  
+set shiftwidth=4 
+set softtabstop=4 
+set tabstop=4 
+
+
+" Nerd Tree
+let NERDChristmasTree=0
+let NERDTreeWinSize=40
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+let NERDTreeShowBookmarks=1
+let NERDTreeWinPos="left"
+nmap <F5> :NERDTreeToggle<cr>
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+autocmd Syntax javascript set syntax=jquery " JQuery syntax support
+
+set matchpairs+=<:>
+set statusline+=%{fugitive#statusline()} "  Git Hotness
+
+" Tagbar
+let g:tagbar_width=35
+let g:tagbar_autofocus=1
+nmap <F8> :TagbarToggle<CR>
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+
+" ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux"
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+set laststatus=2 " Always display the status line
+set statusline+=%{fugitive#statusline()} "  Git Hotness
+
+
+" Leader
+let mapleader = ";"
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+
+"<leader>p搜索当前目录下文件
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_cmd = 'CtrlP'
+"<leader>f搜索MRU（Most Recently Used）文件
+nmap <leader>f :CtrlPMRUFiles<CR>
+"<leader>b显示缓冲区文件，并可通过序号进行跳转
+nmap <Leader>b :CtrlPBuffer<CR>
+"设置搜索时忽略的文件
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc)$',
+    \ }
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_match_window_bottom = 1
+"修改QuickFix窗口显示的最大条目数
+let g:ctrlp_max_height = 15
+let g:ctrlp_match_window_reversed = 0
+"设置MRU最大条目数为500
+let g:ctrlp_mruf_max = 500
+let g:ctrlp_follow_symlinks = 1
+
+
+
+
+
+
+
+
+" Snippets author
+let g:snips_author = 'BeiDai'
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
+
+

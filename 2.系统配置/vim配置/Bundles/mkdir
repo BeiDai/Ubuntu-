@@ -1,0 +1,7 @@
+功能：新建文本
+
+使用：
+:e this/does/not/exist/file.txt
+:w
+
+
