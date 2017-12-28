@@ -9,6 +9,4 @@
 
 }
 
- sudo chmond +X /etc/hdparm.conf
-
-
+ sudo chmod +X /etc/hdparm.conf
